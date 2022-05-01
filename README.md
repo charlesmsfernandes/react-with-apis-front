@@ -37,3 +37,9 @@ Depois, acesse <a href="http://localhost:3000/">http://localhost:3000/</a> no se
 * Instalamos e preparamos o axios;
 * Fizemos requisições GET, para listar pratos e restaurantes.
 
+### Aula 2
+
+* Instalamos e utilizamos a biblioteca MUI;
+* Implementamos a listagem de restaurantes realizando uma requisição GET;
+* Criamos a rotina de cadastro de restaurantes com o verbo HTTP POST.
+* Mudamos a páginação
