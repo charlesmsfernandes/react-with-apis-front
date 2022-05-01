@@ -50,3 +50,9 @@ Depois, acesse <a href="http://localhost:3000/">http://localhost:3000/</a> no se
 * Enviamos parâmetros em requisições GET;
 * Montamos um formulário de busca de restaurantes.
 * Busca por restaurantes
+
+### Aula 4
+
+* Organizamos o layout com elementos do MUI;
+* Organizamos o nosso código, centralizando a criação de um cliente do axios;
+* Utilizamos a ordenação de restaurantes da API.
