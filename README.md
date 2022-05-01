@@ -43,3 +43,10 @@ Depois, acesse <a href="http://localhost:3000/">http://localhost:3000/</a> no se
 * Implementamos a listagem de restaurantes realizando uma requisição GET;
 * Criamos a rotina de cadastro de restaurantes com o verbo HTTP POST.
 * Mudamos a páginação
+
+### Aula 3
+
+* Realizamos requisições utilizando os verbos PUT e DELETE;
+* Enviamos parâmetros em requisições GET;
+* Montamos um formulário de busca de restaurantes.
+* Busca por restaurantes

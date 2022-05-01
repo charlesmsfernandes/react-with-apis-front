@@ -1,9 +1,15 @@
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { useLayoutEffect, useState } from 'react';
 import { IPaginacao } from '../../interfaces/IPaginacao';
 import IRestaurante from '../../interfaces/IRestaurante';
 import style from './ListaRestaurantes.module.scss';
 import Restaurante from './Restaurante';
+
+// esses são os possíveis parâmetros que podemos enviar para a API
+interface IParametrosBusca {
+  ordering?: string
+  search?: string
+}
 
 const ListaRestaurantes = () => {
 
@@ -32,9 +38,10 @@ const ListaRestaurantes = () => {
   const [restaurantes, setRestaurantes] = useState<IRestaurante[]>([]);
   const [proximaPagina, setProximaPagina] = useState('');
   const [paginaAnterior, setPaginaAnterior] = useState('');
+  const [busca, setBusca] = useState('');
 
-  const carregarDados = (url: string) => {
-    axios.get<IPaginacao<IRestaurante>>(url)
+  const carregarDados = (url: string, opcoes: AxiosRequestConfig = {}) => {
+    axios.get<IPaginacao<IRestaurante>>(url, opcoes)
       .then(resposta => {
         setRestaurantes(resposta.data.results)
         setProximaPagina(resposta.data.next)
@@ -43,7 +50,21 @@ const ListaRestaurantes = () => {
       .catch(erro => {
         console.log(erro)
       })
-  }    
+  }
+
+  // a cada busca, montamos um objeto de opções
+  const buscar = (evento: React.FormEvent<HTMLFormElement>) => {
+    evento.preventDefault()
+    const opcoes = {
+      params: {
+
+      } as IParametrosBusca
+    }
+    if (busca) {
+      opcoes.params.search = busca
+    }
+    carregarDados('http://localhost:8000/api/v1/restaurantes/', opcoes)
+  }  
 
   useLayoutEffect(() => {
     // obter restaurantes
@@ -66,6 +87,10 @@ const ListaRestaurantes = () => {
   return (
     <section className={style.ListaRestaurantes}>
     <h1>Os restaurantes mais <em>bacanas</em>!</h1>
+    <form onSubmit={buscar}>
+      <input type="text" value={busca} onChange={evento => setBusca(evento.target.value)} />
+      <button type='submit'>buscar</button>
+    </form>    
     {
       restaurantes?.map(item => <Restaurante restaurante={item} key={item.id} />)
     }
