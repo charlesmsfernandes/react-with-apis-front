@@ -56,3 +56,9 @@ Depois, acesse <a href="http://localhost:3000/">http://localhost:3000/</a> no se
 * Organizamos o layout com elementos do MUI;
 * Organizamos o nosso código, centralizando a criação de um cliente do axios;
 * Utilizamos a ordenação de restaurantes da API.
+
+### Aula 5
+
+* Aninhamos as rotas da área administrativa;
+* Organizamos o layout utilizando o ```<Outlet />```;
+* Descobrimos que podemos usar async e await para trabalhar com promessas.
